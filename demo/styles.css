@@ -24,10 +24,6 @@
   z-index: 1;
 }
 
-.dragging {
-  z-index: 2;
-}
-
 #cardStrip {
   height: 180px;
   width: calc(100% - 56px);
