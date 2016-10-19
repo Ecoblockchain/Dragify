@@ -1,7 +1,11 @@
 'use strict';
 
-var pinnedCards = ['card1', 'card2', 'card3'];
-var cardStripGutter = 8;
+/*
+ * TODO
+ * Config - card list, card container, card dragger, containment, axis, base z-index, placeholder card
+ * Automatically apply draggable given card list
+ * Remove jQuery dependency
+ */
 
 /**
  * Initializes jQuery UI draggable plugin - https://jqueryui.com/draggable/.
@@ -88,7 +92,7 @@ function initDraggable($card) {
 
     hideDropTargetPlaceholder();
 
-    // Reset pinnedCards list which maintains the order of the cards
+    // Reset cardsList list which maintains the order of the cards
     reorderCards();
 
     // Reset vars
@@ -104,13 +108,13 @@ function initDraggable($card) {
    */
   function getNeighbourCards(selectedCardId) {
     let $previousCard, $nextCard;
-    for (let i = 0; i < pinnedCards.length; i++) {
-      if (selectedCardId === pinnedCards[i]) {
+    for (let i = 0; i < cardsList.length; i++) {
+      if (selectedCardId === cardsList[i]) {
         if (i !== 0) {
-          $previousCard = $('#' + pinnedCards[i-1]);
+          $previousCard = $('#' + cardsList[i-1]);
         }
-        if (i !== pinnedCards.length - 1) {
-          $nextCard = $('#' + pinnedCards[i+1]);
+        if (i !== cardsList.length - 1) {
+          $nextCard = $('#' + cardsList[i+1]);
         }
       }
     }
@@ -143,8 +147,11 @@ function initDraggable($card) {
     prevCardOldPosition = prevCardNewPosition = nextCardOldPosition = nextCardNewPosition = undefined;
   }
 
+  /**
+   * Reorder cards list.
+   */
   function reorderCards() {
-    pinnedCards.sort(function(a, b) {
+    cardsList.sort(function(a, b) {
       return $('#' + a).position().left - $('#' + b).position().left;
     });
   }
@@ -154,7 +161,7 @@ function initDraggable($card) {
    * @param left
    */
   function showDropTargetPlaceholder(left) {
-    $('#dropTargetDiv').css({
+    $('#placeholderCard').css({
       'width': _$selectedCard.outerWidth(),
       'left': left,
       'visibility': 'visible'
@@ -165,10 +172,7 @@ function initDraggable($card) {
    * Hides the drop target placeholder.
    */
   function hideDropTargetPlaceholder() {
-    $('#dropTargetDiv').css('visibility', 'hidden');
+    $('#placeholderCard').css('visibility', 'hidden');
   }
 };
 
-initDraggable($('#card1'));
-initDraggable($('#card2'));
-initDraggable($('#card3'));

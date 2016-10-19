@@ -8,6 +8,7 @@
   border: 1px solid #222;
   border-bottom: none;
   background: black;
+  cursor: move;
 }
 
 .content {
@@ -20,6 +21,11 @@
 .card {
   height: 180px;
   width: 240px;
+  z-index: 1;
+}
+
+.dragging {
+  z-index: 2;
 }
 
 #cardStrip {
@@ -30,7 +36,7 @@
   left: 28px;
 }
 
-#dropTargetDiv {
+#placeholderCard {
   position: absolute;
   top: 0;
   width: 240px;
@@ -43,16 +49,19 @@
   position: absolute;
   top: 0;
   left: 0;
+  background: yellow;
 }
 
 #card2 {
   position: absolute;
   top: 0;
   left: 248px;
+  background: red;
 }
 
 #card3 {
   position: absolute;
   top: 0;
   left: 496px;
+  background: green;
 }
