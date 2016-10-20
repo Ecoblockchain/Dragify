@@ -4,7 +4,6 @@ A library that makes your DOM elements within a container, draggable.
 
 ### Work in progress, watch this space for updates
 ##### TODO
- * Implement undragify
  * Refactor config keys
  * Use ES6
  * Add docu
