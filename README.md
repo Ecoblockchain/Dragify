@@ -7,8 +7,6 @@ Yes. This was partially created to scratch my own itch. The other libraries were
 
 ### Work in progress, watch this space for updates
 ##### TODO
- * Refactor config keys
- * Use ES2015
  * Implement tests
  * Add docu
  * CommonJS compatible
